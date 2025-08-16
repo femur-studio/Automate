@@ -93,4 +93,15 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Fix text selection visibility issue */
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
 }
