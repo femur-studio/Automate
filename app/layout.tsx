@@ -109,41 +109,41 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        <title>AutoScale AI – E-commerce Automation Agency</title>
+        <title>Femur – Business Growth Solutions</title>
         <meta
           name="description"
-          content="E-commerce brands plug our AI to cut support tickets by 60% and reclaim 10+ hours a week. Book your free 30-min automation audit today."
+          content="Femur helps businesses grow with smart solutions and expert guidance. Get your free consultation today."
         />
         <meta
           name="keywords"
-          content="e-commerce automation, AI chatbots, workflow automation, customer support automation, lead qualification, Zapier automation, Make automation"
+          content="business consulting, growth strategy, process optimization, business solutions, expert guidance"
         />
-        <meta name="author" content="AutoScale AI" />
+        <meta name="author" content="Femur" />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://autoscale-ai.com/" />
-        <meta property="og:title" content="AutoScale AI – E-commerce Automation Agency" />
+        <meta property="og:url" content="https://femur.com/" />
+        <meta property="og:title" content="Femur – Business Growth Solutions" />
         <meta
           property="og:description"
-          content="E-commerce brands plug our AI to cut support tickets by 60% and reclaim 10+ hours a week. Book your free 30-min automation audit today."
+          content="Femur helps businesses grow with smart solutions and expert guidance. Get your free consultation today."
         />
-        <meta property="og:image" content="https://autoscale-ai.com/og-image.jpg" />
+        <meta property="og:image" content="https://femur.com/og-image.jpg" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://autoscale-ai.com/" />
-        <meta property="twitter:title" content="AutoScale AI – E-commerce Automation Agency" />
+        <meta property="twitter:url" content="https://femur.com/" />
+        <meta property="twitter:title" content="Femur – Business Growth Solutions" />
         <meta
           property="twitter:description"
-          content="E-commerce brands plug our AI to cut support tickets by 60% and reclaim 10+ hours a week. Book your free 30-min automation audit today."
+          content="Femur helps businesses grow with smart solutions and expert guidance. Get your free consultation today."
         />
-        <meta property="twitter:image" content="https://autoscale-ai.com/og-image.jpg" />
+        <meta property="twitter:image" content="https://femur.com/og-image.jpg" />
 
         {/* Additional SEO */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://autoscale-ai.com/" />
+        <link rel="canonical" href="https://femur.com/" />
         <meta name="theme-color" content="#10b981" />
 
         {/* Structured Data */}
@@ -153,25 +153,25 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "AutoScale AI",
+              name: "Femur",
               description:
-                "E-commerce automation agency helping brands cut support tickets by 60% and reclaim 10+ hours a week with AI-powered solutions.",
-              url: "https://autoscale-ai.com",
-              logo: "https://autoscale-ai.com/logo.png",
+                "Business growth solutions helping companies achieve their goals with smart strategies and expert guidance.",
+              url: "https://femur.com",
+              logo: "https://femur.com/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+1-555-AUTOMATE",
+                telephone: "+1-555-FEMUR",
                 contactType: "customer service",
-                email: "hello@autoscale-ai.com",
+                email: "hello@femur.com",
               },
-              sameAs: ["https://linkedin.com/company/autoscale-ai", "https://twitter.com/autoscale_ai"],
+              sameAs: ["https://linkedin.com/company/femur", "https://twitter.com/femur"],
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "US",
               },
               foundingDate: "2024",
               numberOfEmployees: "10-50",
-              industry: "E-commerce Automation",
+              industry: "Business Consulting",
             }),
           }}
         />
@@ -186,18 +186,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Newsletter newsletter={footer.newsletter} />
           {/* Footer */}
           <Footer footer={footer} logo={settings.logo} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                document.addEventListener('DOMContentLoaded', function() {
-                  var tidioScript = document.createElement('script');
-                  tidioScript.src = '//code.tidio.co/your-tidio-key.js';
-                  tidioScript.async = true;
-                  document.body.appendChild(tidioScript);
-                });
-              `,
-            }}
-          />
         </Providers>
       </body>
     </html>

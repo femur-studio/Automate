@@ -1,13 +1,13 @@
-import { type DarkLightImageFragment } from "../lib/basehub/fragments";
-import clsx from "clsx";
-import { BaseHubImage } from "basehub/next-image";
-import type { ImageProps } from "next/image";
+import type { DarkLightImageFragment } from "../lib/basehub/fragments"
+import clsx from "clsx"
+import { BaseHubImage } from "basehub/next-image"
+import type { ImageProps } from "next/image"
 
 type DarkLightImageProps = DarkLightImageFragment &
   Omit<ImageProps, "src" | "alt"> & {
-    alt?: string;
-    withPlaceholder?: boolean;
-  };
+    alt?: string
+    withPlaceholder?: boolean
+  }
 
 export function DarkLightImage({
   alt,
@@ -26,7 +26,7 @@ export function DarkLightImage({
           alt={dark.alt ?? alt ?? ""}
           className={clsx("hidden dark:block", className)}
           height={height ?? dark.height}
-          src={dark.url}
+          src={dark.url || "/placeholder.svg"}
           width={width ?? dark.width}
           {...props}
           {...(withPlaceholder && dark.blurDataURL
@@ -52,33 +52,33 @@ export function DarkLightImage({
           : {})}
       />
     </>
-  );
+  )
 }
 
 export function DarkLightImageAutoscale(props: DarkLightImageProps) {
-  const [aspectRatioWidth, aspectRatioHeight] = props.light.aspectRatio.split("/").map(Number);
-  const aspectRatio = (aspectRatioWidth ?? 0) / (aspectRatioHeight ?? 0);
-  let logoStyle;
+  const [aspectRatioWidth, aspectRatioHeight] = props.light.aspectRatio.split("/").map(Number)
+  const aspectRatio = (aspectRatioWidth ?? 0) / (aspectRatioHeight ?? 0)
+  let logoStyle
 
   switch (true) {
     case aspectRatio <= 1.2:
-      logoStyle = "square";
-      break;
+      logoStyle = "square"
+      break
     case aspectRatio < 1.4:
-      logoStyle = "4/3";
-      break;
+      logoStyle = "4/3"
+      break
     case aspectRatio < 4:
-      logoStyle = "portrait";
-      break;
+      logoStyle = "portrait"
+      break
     default:
-      logoStyle = "landscape";
-      break;
+      logoStyle = "landscape"
+      break
   }
 
   return (
     <DarkLightImage
       priority
-      alt="logo"
+      alt="Femur logo"
       className={clsx("w-auto max-w-[200px] object-contain", {
         "h-10": logoStyle === "square",
         "h-9": logoStyle === "4/3",
@@ -90,5 +90,5 @@ export function DarkLightImageAutoscale(props: DarkLightImageProps) {
       }}
       {...props}
     />
-  );
+  )
 }
