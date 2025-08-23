@@ -4,7 +4,6 @@ import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
 import { Badge } from "../components/ui/badge"
 import { Clock, Users, Zap, Target, Calendar } from "lucide-react"
-import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -40,10 +39,10 @@ export default function HomePage() {
               size="lg"
               className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
-              <Link href="#contact" rel="noopener noreferrer">
+              <a href="https://cal.com/femur/consultation" target="_blank" rel="noopener noreferrer">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Free Consultation
-              </Link>
+              </a>
             </Button>
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -84,7 +83,7 @@ export default function HomePage() {
       <Section className="py-16 border-y bg-gray-50/50 dark:bg-gray-900/20">
         <div className="text-center space-y-8">
           <p className="text-sm text-muted-foreground uppercase tracking-wide font-medium">
-            we use tools you love
+            Powered by industry-leading automation tools
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16">
             <img
@@ -120,11 +119,11 @@ export default function HomePage() {
             </Badge>
             <Heading>
               <div>
-              <h2 className="text-3xl lg:text-5xl font-bold mb-4">Grow Your Business with Confidence</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Stop struggling with complex business challenges. Our expert solutions help you focus on what matters
-                most - growing your business.
-              </p>
+                <h2 className="text-3xl lg:text-5xl font-bold mb-4">Grow Your Business with Confidence</h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Stop struggling with complex business challenges. Our expert solutions help you focus on what matters
+                  most - growing your business.
+                </p>
               </div>
             </Heading>
           </div>
@@ -235,42 +234,61 @@ export default function HomePage() {
 
             <Heading>
               <div>
-              <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">Ready to Grow Your Business?</h2>
-              <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-                Get in touch with our team and discover how Femur can help you achieve your business goals.
-              </p>
+                <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-white">Ready to Grow Your Business?</h2>
+                <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
+                  Get in touch with our team and discover how Femur can help you achieve your business goals.
+                </p>
               </div>
             </Heading>
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto">
-              <form className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    className="px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+              <div className="space-y-6">
+                <div className="text-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mb-6"
+                  >
+                    <a href="https://cal.com/femur/consultation" target="_blank" rel="noopener noreferrer">
+                      <Calendar className="w-5 h-5 mr-2" />
+                      Schedule a Meeting
+                    </a>
+                  </Button>
+                  <div className="text-sm text-emerald-200/80 mb-6">
+                    ✓ 30-minute free consultation ✓ No commitment required
+                  </div>
+                  <div className="text-emerald-200/60 text-sm mb-6">Or send us a message below</div>
+                </div>
+
+                <form className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      placeholder="Your name"
+                      className="px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                      required
+                    />
+                    <input
+                      type="email"
+                      placeholder="Your email"
+                      className="px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                      required
+                    />
+                  </div>
+                  <textarea
+                    placeholder="Tell us about your business goals..."
+                    rows={4}
+                    className="w-full px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent resize-none"
                     required
                   />
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className="px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <textarea
-                  placeholder="Tell us about your business goals..."
-                  rows={4}
-                  className="w-full px-6 py-4 border border-white/20 rounded-xl bg-white/10 backdrop-blur-sm text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent resize-none"
-                  required
-                />
-                <Button className="w-full bg-emerald-500 hover:bg-emerald-600 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  Send Message
-                </Button>
-                <div className="text-xs text-emerald-200/80 text-center">
-                  ✓ Free consultation ✓ No spam, ever ✓ Response within 24 hours
-                </div>
-              </form>
+                  <Button className="w-full bg-emerald-500 hover:bg-emerald-600 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    Send Message
+                  </Button>
+                  <div className="text-xs text-emerald-200/80 text-center">
+                    ✓ Free consultation ✓ No spam, ever ✓ Response within 24 hours
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
