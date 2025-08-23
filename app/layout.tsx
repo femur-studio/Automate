@@ -1,14 +1,8 @@
 import type React from "react"
-import "../basehub.config"
 import "../styles/globals.css"
 import { Inter } from "next/font/google"
-import { basehub } from "basehub"
-import { Toolbar } from "basehub/next-toolbar"
 import { Providers } from "./providers"
-import { footerFragment, headerFragment } from "../lib/basehub/fragments"
 import { Newsletter } from "./_sections/newsletter"
-import { themeFragment } from "../context/basehub-theme-provider"
-import { PlaygroundSetupModal } from "../components/playground-notification"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -21,90 +15,53 @@ const inter = Inter({
 export const dynamic = "force-static"
 export const revalidate = 30
 
-const envs: Record<string, { isValid: boolean; name: string; label: string }> = {}
-const _vercel_url_env_name = "VERCEL_URL"
-const isMainV0 = process.env[_vercel_url_env_name]?.startsWith("preview-marketing-website-kzmm0bsl7yb9no8k62xm")
-
-let allValid = true
-const subscribeEnv = ({
-  name,
-  label,
-  value,
-}: {
-  name: string
-  label: string
-  value: string | undefined
-}) => {
-  const isValid = !!value
-  if (!isValid) {
-    allValid = false
-  }
-  envs[name] = {
-    isValid,
-    name,
-    label,
-  }
+const staticSiteData = {
+  settings: {
+    theme: { mode: "dark" },
+    logo: {
+      dark: { url: "/femur-logo.jpg", alt: "Femur", width: 120, height: 40 },
+      light: { url: "/femur-logo.jpg", alt: "Femur", width: 120, height: 40 },
+    },
+  },
+  header: {
+    navbar: {
+      items: [
+        { _id: "1", _title: "Features", href: "/features", sublinks: { items: [] } },
+        { _id: "2", _title: "Pricing", href: "/pricing", sublinks: { items: [] } },
+        { _id: "3", _title: "Blog", href: "/blog", sublinks: { items: [] } },
+        { _id: "4", _title: "Changelog", href: "/changelog", sublinks: { items: [] } },
+      ],
+    },
+    rightCtas: {
+      items: [{ _id: "cta1", label: "Get Started", href: "/contact", type: "primary" }],
+    },
+  },
+  footer: {
+    newsletter: {
+      title: "Stay Updated",
+      description: "Get the latest updates and insights delivered to your inbox.",
+      submissions: {
+        ingestKey: "static",
+        schema: [{ id: "email", name: "email", type: "email", label: "Email", required: true }],
+      },
+    },
+    copyright: "© 2024 Femur. All rights reserved.",
+    navbar: {
+      items: [
+        { _title: "Privacy Policy", url: "/privacy" },
+        { _title: "Terms of Service", url: "/terms" },
+        { _title: "Contact", url: "/contact" },
+      ],
+    },
+    socialLinks: [
+      { _title: "Twitter", url: "https://twitter.com/femur", icon: { url: "/twitter-icon.svg" } },
+      { _title: "LinkedIn", url: "https://linkedin.com/company/femur", icon: { url: "/linkedin-icon.svg" } },
+    ],
+  },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const [
-    {
-      site: { footer, settings, header },
-    },
-  ] = await Promise.all([
-    basehub().query({
-      site: {
-        settings: {
-          theme: themeFragment,
-          logo: {
-            dark: {
-              url: true,
-              alt: true,
-              width: true,
-              height: true,
-              aspectRatio: true,
-              blurDataURL: true,
-            },
-            light: {
-              url: true,
-              alt: true,
-              width: true,
-              height: true,
-              aspectRatio: true,
-              blurDataURL: true,
-            },
-          },
-          showUseTemplate: true,
-        },
-        header: headerFragment,
-        footer: footerFragment,
-      },
-    }),
-  ])
-
-  let playgroundNotification = null
-
-  subscribeEnv({
-    name: "BASEHUB_TOKEN",
-    label: "BaseHub Read Token",
-    value: process.env.BASEHUB_TOKEN,
-  })
-
-  if (!isMainV0 && !allValid && process.env.NODE_ENV !== "production") {
-    const playgroundData = await basehub().query({
-      _sys: {
-        playgroundInfo: {
-          expiresAt: true,
-          editUrl: true,
-          claimUrl: true,
-        },
-      },
-    })
-
-    if (playgroundData._sys.playgroundInfo) {
-      playgroundNotification = <PlaygroundSetupModal playgroundInfo={playgroundData._sys.playgroundInfo} envs={envs} />
-    }
-  }
+  const { settings, header, footer } = staticSiteData
 
   return (
     <html suppressHydrationWarning lang="en">
@@ -177,9 +134,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body className={`min-h-svh max-w-[100vw] bg-background text-foreground ${inter.variable} font-sans`}>
-        <Providers theme={settings.theme}>
-          {!isMainV0 && <Toolbar />}
-          {playgroundNotification}
+        <Providers>
           {/* Header */}
           <Header logo={settings.logo} header={header} />
           <main className="min-h-[calc(100svh-var(--header-height))]">{children}</main>

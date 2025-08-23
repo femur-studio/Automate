@@ -1,14 +1,7 @@
 import { ButtonLink } from "@/common/button"
 import { DesktopMenu, MobileMenu } from "./navigation-menu"
-import type { DarkLightImageFragment, HeaderFragment } from "@/lib/basehub/fragments"
 
-export const Header = ({
-  logo,
-  header,
-}: {
-  logo: DarkLightImageFragment
-  header: HeaderFragment
-}) => {
+export const Header = () => {
   return (
     <header className="sticky left-0 top-0 z-[110] flex w-full flex-col border-b border-[--border] bg-[--surface-primary] dark:border-[--dark-border] dark:bg-[--dark-surface-primary]">
       <div className="flex h-[--header-height] bg-[--surface-primary] dark:bg-[--dark-surface-primary]">
@@ -16,8 +9,8 @@ export const Header = ({
           <ButtonLink unstyled className="flex items-center ring-offset-2" href="/">
             <img src="/femur-logo.jpg" alt="Femur" className="h-8 w-auto" />
           </ButtonLink>
-          <DesktopMenu {...header} />
-          <MobileMenu {...header} />
+          <DesktopMenu />
+          <MobileMenu />
         </div>
       </div>
     </header>
